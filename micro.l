@@ -1,29 +1,32 @@
 %{
-#include <stdlib.h>
 #include <stdio.h>
+#include "y.tab.h"
 %}
-%option noyywrap
 
-espacio         [ \t]+
+%option noyywrap
+separador       ([ \t””])+
 digito          [0-9]
-integer         {digito}+
+letra           [a-zA-Z]
+identificador   {letra}({letra}|{digito})*
+constEntera     {digito}({digito})* 
 
 %%
 
-{espacio}           { /* Ignoramos espacios en blanco */ }
-"exit"|"quit"|"bye"	{printf("Terminando programa\n");exit(0);}
-{integer}	        {
-                        yylval.dval=atoi(yytext);
-                        return(NUMERO);
-                    }
-
-"+"           return(SIMB_MAS);
-"-"           return(SIMB_MENOS);
-"*"           return(MULTI);
-"/"           return(DIVIDIR);
-"^"           return(POTENCIA);
-"("           return(PARENT_IZQUIERDO);
-")"           return(PARENT_DERECHO);
-"\n"  return(FIN);
-
+{separador}     { /* Ignoramos los separadores */ }
+{constEntera}   {return(CONSTENTERA);}
+"inicio"        {return(INICIO);}
+"fin"           {return(FIN);}
+"leer"          {return(LEER);}
+"escribir"      {return(ESCRIBIR);}
+":="            {return(ASIGNACION);}
+","             {return(COMA);}
+";"             {return(PUNTOYCOMA);}
+"+"             {return(SIMB_MAS);}
+"-"             {return(SIMB_MENOS);}
+"("             {return(PARENT_IZQUIERDO);}
+")"             {return(PARENT_DERECHO);}
+{identificador} {return(IDENTIFICADOR);}
+\n              {return(NL);}
+.               ECHO; 
+<<EOF>>     	{return(FDT);}
 %%

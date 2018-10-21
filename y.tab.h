@@ -47,28 +47,40 @@ extern int yydebug;
       know about them.  */
    enum yytokentype {
      NUMERO = 258,
-     SIMB_MAS = 259,
-     SIMB_MENOS = 260,
-     MULTI = 261,
-     DIVIDIR = 262,
-     POTENCIA = 263,
+     CONSTENTERA = 259,
+     SIMB_MAS = 260,
+     SIMB_MENOS = 261,
+     NL = 262,
+     FDT = 263,
      PARENT_IZQUIERDO = 264,
      PARENT_DERECHO = 265,
-     FIN = 266,
-     NEGADO = 267
+     IDENTIFICADOR = 266,
+     INICIO = 267,
+     FIN = 268,
+     LEER = 269,
+     ESCRIBIR = 270,
+     ASIGNACION = 271,
+     COMA = 272,
+     PUNTOYCOMA = 273
    };
 #endif
 /* Tokens.  */
 #define NUMERO 258
-#define SIMB_MAS 259
-#define SIMB_MENOS 260
-#define MULTI 261
-#define DIVIDIR 262
-#define POTENCIA 263
+#define CONSTENTERA 259
+#define SIMB_MAS 260
+#define SIMB_MENOS 261
+#define NL 262
+#define FDT 263
 #define PARENT_IZQUIERDO 264
 #define PARENT_DERECHO 265
-#define FIN 266
-#define NEGADO 267
+#define IDENTIFICADOR 266
+#define INICIO 267
+#define FIN 268
+#define LEER 269
+#define ESCRIBIR 270
+#define ASIGNACION 271
+#define COMA 272
+#define PUNTOYCOMA 273
 
 
 
@@ -76,13 +88,13 @@ extern int yydebug;
 typedef union YYSTYPE
 {
 /* Line 2058 of yacc.c  */
-#line 5 "calculadora.y"
+#line 5 "micro.y"
 
-        double dval;
+	int int_val
 
 
 /* Line 2058 of yacc.c  */
-#line 86 "y.tab.h"
+#line 98 "y.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

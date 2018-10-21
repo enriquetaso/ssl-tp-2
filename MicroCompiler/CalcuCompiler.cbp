@@ -31,13 +31,13 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="calculadora.tab.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="calculadora.tab.h" />
 		<Unit filename="lex.yy.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="y.tab.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="y.tab.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

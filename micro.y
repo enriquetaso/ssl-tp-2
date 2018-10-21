@@ -1,43 +1,61 @@
 %{
-#include <math.h>
+#include <stdio.h>
 %}
 
-%token  <dval> NUMERO 
-%token  SIMB_MAS    SIMB_MENOS   MULTI	DIVIDIR  POTENCIA
-%token  PARENT_IZQUIERDO	PARENT_DERECHO
-%token  FIN
+%union {
+	int int_val
+}
 
-%left   SIMB_MAS    SIMB_MENOS
-%left   MULTI  DIVIDIR
-%left   NEGADO
-%right  POTENCIA
+%token  <int_val> NUMERO   CONSTENTERA
+%token  SIMB_MAS    SIMB_MENOS   NL  FDT
+%token  PARENT_IZQUIERDO	PARENT_DERECHO   IDENTIFICADOR
+%token  INICIO  FIN  LEER  ESCRIBIR  ASIGNACION  COMA PUNTOYCOMA
 
-%type <dval> Expresion
-%start Input
+%left   SIMB_MAS    SIMB_MENOS   ASIGNACION
+
+%start Objetivo
 
 %%
 
-Input:	Linea
-	| Input Linea
-    ;
 
-Linea:	FIN
-        | Expresion FIN                { printf("Resultado: %f\n",$1); }
-        ;
+Objetivo : Programa FDT
+			;
+			
+Programa : INICIO ListaSentencias  FIN 
+			;
+			
+ListaSentencias : Sentencia	
+				| ListaSentencias NL Sentencia
+				;
+				
+Sentencia : IDENTIFICADOR ASIGNACION Expresion PUNTOYCOMA
+			| LEER PARENT_IZQUIERDO ListaIdentificadores PARENT_DERECHO PUNTOYCOMA
+			| ESCRIBIR PARENT_IZQUIERDO ListaExpresiones PARENT_DERECHO PUNTOYCOMA
+			;
 
-Expresion:	NUMERO                        { $$=$1; }
-        | Expresion SIMB_MAS Expresion    { $$=$1+$3; }
-        | Expresion SIMB_MENOS Expresion   { $$=$1-$3; }
-        | Expresion MULTI Expresion   { $$=$1*$3; }
-        | Expresion DIVIDIR Expresion  { $$=$1/$3; }
-        | SIMB_MENOS Expresion %prec NEGADO    { $$=-$2; }
-        | Expresion POTENCIA Expresion   { $$=pow($1,$3); }
-        | PARENT_IZQUIERDO Expresion PARENT_DERECHO { $$=$2; }
-        ;
+ListaIdentificadores : IDENTIFICADOR
+					| IDENTIFICADOR COMA ListaIdentificadores
+					;
+			
+ListaExpresiones : Expresion
+				| Expresion COMA ListaExpresiones
+				;
+			
+Expresion :	Primaria 
+			| Primaria OperadorAditivo Expresion
+			;
+
+Primaria : IDENTIFICADOR 
+		| CONSTENTERA 
+		| PARENT_IZQUIERDO Expresion PARENT_DERECHO ;
+
+OperadorAditivo : SIMB_MAS 
+				| SIMB_MENOS 
+				;
 
 %%
 int yyerror(char *s) {
-  printf("Error: no se reconoce la operación.\n");
+  printf("Error: no se reconoce la operacion.\n");
 }
 
 int main(void) {
