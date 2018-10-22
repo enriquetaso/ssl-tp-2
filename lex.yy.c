@@ -363,8 +363,8 @@ static void yy_fatal_error (yyconst char msg[]  );
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
 
-#define YY_NUM_RULES 17
-#define YY_END_OF_BUFFER 18
+#define YY_NUM_RULES 16
+#define YY_END_OF_BUFFER 17
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -374,7 +374,7 @@ struct yy_trans_info
 	};
 static yyconst flex_int16_t yy_accept[42] =
     {   0,
-        0,    0,   18,   16,    1,   15,   12,   13,   10,    8,
+        0,    0,   17,   16,    1,   15,   12,   13,   10,    8,
        11,    2,   16,    9,   14,   14,   14,   14,   14,    1,
         2,    7,   14,   14,   14,   14,   14,   14,    4,   14,
        14,   14,   14,    5,   14,   14,   14,    3,   14,    6,
@@ -396,10 +396,10 @@ static yyconst flex_int32_t yy_ec[256] =
 
        16,   17,   13,   13,   18,   13,   13,   19,   13,   20,
        21,   13,   13,   22,   23,   13,   13,   13,   13,   13,
-       13,   13,    1,    1,    1,    1,    1,    2,    1,    1,
+       13,   13,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    2,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -407,7 +407,7 @@ static yyconst flex_int32_t yy_ec[256] =
 
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    2,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1
@@ -827,18 +827,11 @@ YY_RULE_SETUP
 case 16:
 YY_RULE_SETUP
 #line 30 "micro.l"
-ECHO; 
-	YY_BREAK
-case YY_STATE_EOF(INITIAL):
-#line 31 "micro.l"
-{return(FDT);}
-	YY_BREAK
-case 17:
-YY_RULE_SETUP
-#line 32 "micro.l"
 ECHO;
 	YY_BREAK
-#line 842 "lex.yy.c"
+#line 833 "lex.yy.c"
+case YY_STATE_EOF(INITIAL):
+	yyterminate();
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1830,7 +1823,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 31 "micro.l"
+#line 29 "micro.l"
 
 
 

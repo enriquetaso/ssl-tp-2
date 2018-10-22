@@ -90,7 +90,7 @@ typedef union YYSTYPE
 /* Line 2058 of yacc.c  */
 #line 5 "micro.y"
 
-	int int_val
+	int dval
 
 
 /* Line 2058 of yacc.c  */

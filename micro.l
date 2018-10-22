@@ -4,16 +4,20 @@
 %}
 
 %option noyywrap
-separador       ([ \t””])+
+separador       [ \t]+
 digito          [0-9]
 letra           [a-zA-Z]
 identificador   {letra}({letra}|{digito})*
-constEntera     {digito}({digito})* 
+entero			{digito}+
 
 %%
 
 {separador}     { /* Ignoramos los separadores */ }
-{constEntera}   {return(CONSTENTERA);}
+"exit"|"salir"	{printf("Terminando programa\n");exit(0);}
+{entero}	    {
+					yylval.dval=atoi(yytext);
+                    return(CONSTENTERA);
+                }
 "inicio"        {return(INICIO);}
 "fin"           {return(FIN);}
 "leer"          {return(LEER);}
@@ -25,8 +29,12 @@ constEntera     {digito}({digito})*
 "-"             {return(SIMB_MENOS);}
 "("             {return(PARENT_IZQUIERDO);}
 ")"             {return(PARENT_DERECHO);}
-{identificador} {return(IDENTIFICADOR);}
-\n              {return(NL);}
-.               ECHO; 
-<<EOF>>     	{return(FDT);}
+{identificador} {
+					if(strlen(yytext) > 32) {
+						printf("Error en la dimension del nombre del Identificador\n");					
+					} else {
+						return IDENTIFICADOR;
+					}
+				}
+"."				{return(FDT);}
 %%

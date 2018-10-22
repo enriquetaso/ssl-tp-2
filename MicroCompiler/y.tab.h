@@ -46,41 +46,39 @@ extern int yydebug;
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     NUMERO = 258,
-     CONSTENTERA = 259,
-     SIMB_MAS = 260,
-     SIMB_MENOS = 261,
-     NL = 262,
-     FDT = 263,
-     PARENT_IZQUIERDO = 264,
-     PARENT_DERECHO = 265,
-     IDENTIFICADOR = 266,
-     INICIO = 267,
-     FIN = 268,
-     LEER = 269,
-     ESCRIBIR = 270,
-     ASIGNACION = 271,
-     COMA = 272,
-     PUNTOYCOMA = 273
+     CONSTENTERA = 258,
+     SIMB_MAS = 259,
+     SIMB_MENOS = 260,
+     NL = 261,
+     FDT = 262,
+     PARENT_IZQUIERDO = 263,
+     PARENT_DERECHO = 264,
+     IDENTIFICADOR = 265,
+     INICIO = 266,
+     FIN = 267,
+     LEER = 268,
+     ESCRIBIR = 269,
+     ASIGNACION = 270,
+     COMA = 271,
+     PUNTOYCOMA = 272
    };
 #endif
 /* Tokens.  */
-#define NUMERO 258
-#define CONSTENTERA 259
-#define SIMB_MAS 260
-#define SIMB_MENOS 261
-#define NL 262
-#define FDT 263
-#define PARENT_IZQUIERDO 264
-#define PARENT_DERECHO 265
-#define IDENTIFICADOR 266
-#define INICIO 267
-#define FIN 268
-#define LEER 269
-#define ESCRIBIR 270
-#define ASIGNACION 271
-#define COMA 272
-#define PUNTOYCOMA 273
+#define CONSTENTERA 258
+#define SIMB_MAS 259
+#define SIMB_MENOS 260
+#define NL 261
+#define FDT 262
+#define PARENT_IZQUIERDO 263
+#define PARENT_DERECHO 264
+#define IDENTIFICADOR 265
+#define INICIO 266
+#define FIN 267
+#define LEER 268
+#define ESCRIBIR 269
+#define ASIGNACION 270
+#define COMA 271
+#define PUNTOYCOMA 272
 
 
 
@@ -90,11 +88,11 @@ typedef union YYSTYPE
 /* Line 2058 of yacc.c  */
 #line 5 "micro.y"
 
-	int int_val
+	int dval
 
 
 /* Line 2058 of yacc.c  */
-#line 98 "y.tab.h"
+#line 96 "y.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

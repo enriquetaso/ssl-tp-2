@@ -22,7 +22,7 @@
 
 1476993962 c:\users\federico\downloads\ssl - lex y yacc\tpssl\microcompiler\calculadora.tab.h
 
-1540157035 source:c:\users\federico\facultad\ssl\ssl-tp-2\microcompiler\lex.yy.c
+1540171305 source:c:\users\federico\facultad\ssl\ssl-tp-2\microcompiler\lex.yy.c
 	<stdio.h>
 	<string.h>
 	<errno.h>
@@ -32,9 +32,9 @@
 	"y.tab.h"
 	<unistd.h>
 
-1540157033 c:\users\federico\facultad\ssl\ssl-tp-2\microcompiler\y.tab.h
+1540171304 c:\users\federico\facultad\ssl\ssl-tp-2\microcompiler\y.tab.h
 
-1540157033 source:c:\users\federico\facultad\ssl\ssl-tp-2\microcompiler\y.tab.c
+1540171304 source:c:\users\federico\facultad\ssl\ssl-tp-2\microcompiler\y.tab.c
 	<stdio.h>
 	<stddef.h>
 	<libintl.h>
