@@ -3,7 +3,7 @@
 Para compilar el proyecto, debe seguirse los siguientes pasos en Windows:
 1. `bison -yd micro.y`
 2. `Flex micro.l`
-3.  `gcc y.tab.c lex.yy.c -ll -o salida`
+3.  `gcc y.tab.c lex.yy.c -o salida`
 
 
 ## Trabajo escrito para entregar
