@@ -22,3 +22,5 @@ De esta forma nos aseguramos que compile para windows sin crear una vm.
 
 ### Cosas curiosas
 1. [¿Por qué no compila en Windows?](https://stackoverflow.com/questions/32117572/why-does-a-linux-compiled-program-not-work-on-windows)
+
+https://media.giphy.com/media/10dU7AN7xsi1I4/giphy.gif
