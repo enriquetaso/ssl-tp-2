@@ -17,6 +17,7 @@ Para compilar un ejecutable de Windows en Linux, usamos la técnica llamada *cro
 
 1. Primero lo installamos `sudo dnf install mingw64-gcc-*`. Yo estoy usando Fedora 28. Depende la distro que uses instalar el paquete adecuado. 
 2. Compilamos de la siguiente manera `x86_64-w64-mingw32-gcc -o hello_world.exe hello_world.c`.
+De esta forma nos aseguramos que compile para windows sin crear una vm. 
 
 
 ### Cosas curiosas
