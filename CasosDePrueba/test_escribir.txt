@@ -3,3 +3,4 @@ a:=2;
 b:=5;
 escribir(a+b);
 fin.
+salir

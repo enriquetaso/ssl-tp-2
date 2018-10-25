@@ -21,12 +21,12 @@
 
 Objetivo : Programa FDT {printf("<programa> FDT\n");};
 			
-Programa : INICIO FIN 							{printf("INICIO FIN\n");}
-		|  INICIO ListaSentencias FIN 			{printf("INICIO <listaSentencias> FIN\n");}
+Programa : INICIO FIN 							{printf("INICIO y FIN del programa, sin sentencias.\n");}
+		|  INICIO ListaSentencias FIN 			{printf("INICIO del programa, <listaSentencias>, FIN del programa.\n");}
 		;
 			
 ListaSentencias : Sentencia						{printf("<sentencia> \n");}
-				| ListaSentencias Sentencia		{printf("<sentencia> {<sentencia>} \n");}
+				| ListaSentencias Sentencia		{printf("Lista de sentencias: <sentencia> {<sentencia>}.\n");}
 				;
 				
 Sentencia : IDENTIFICADOR ASIGNACION Expresion PUNTOYCOMA 							{printf("ID ASIGNACION <expresion> ;\n");}
@@ -46,7 +46,7 @@ Expresion :	Primaria								{printf("<primaria>\n");}
 			;
 			
 Primaria : IDENTIFICADOR 							{printf("ID\n");}
-		| CONSTENTERA 								{printf("CONSTANTE: %d\n", $1);}
+		| CONSTENTERA 								{printf("CONSTANTE encontrada: %d\n", $1);}
 		| PARENT_IZQUIERDO Expresion PARENT_DERECHO {printf("( <expresion> )\n");}
 		;
 

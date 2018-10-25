@@ -13,7 +13,7 @@ entero			{digito}+
 %%
 
 {separador}     { /* Ignoramos los separadores */ }
-"exit"|"salir"	{printf("Terminando programa\n");exit(0);}
+"exit"|"salir"	{printf("Fin del programa.\n");exit(0);}
 {entero}	    {
 					yylval.dval=atoi(yytext);
                     return(CONSTENTERA);
@@ -31,7 +31,7 @@ entero			{digito}+
 ")"             {return(PARENT_DERECHO);}
 {identificador} {
 					if(strlen(yytext) > 32) {
-						printf("Error en la dimension del nombre del Identificador\n");					
+						printf("Error: El nombre del identificador excede la longuitud permitida (<32).\n");
 					} else {
 						return IDENTIFICADOR;
 					}
