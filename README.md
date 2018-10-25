@@ -6,6 +6,11 @@ Para compilar el proyecto, debe seguirse los siguientes pasos en Windows:
 3.  `gcc y.tab.c lex.yy.c -o salida`
 
 
+Luego, para usar los casos de prueba:`./salida CasosDePrueba/test_error_cuando_asigno_float.txt`.
+
+
+Si estas en Linux: `./test_casos_de_prueba.sh`
+
 ## Trabajo escrito para entregar
 
 https://docs.google.com/document/d/1d66TJlU3g4_jXTxKp_gQAHaZQSzA2YfQy7DAlaV3bkY/edit
