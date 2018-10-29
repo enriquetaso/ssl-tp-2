@@ -758,7 +758,7 @@ YY_RULE_SETUP
 case 2:
 YY_RULE_SETUP
 #line 16 "micro.l"
-{printf("Terminando programa\n");exit(0);}
+{printf("Fin del programa.\n");exit(0);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
@@ -828,7 +828,7 @@ YY_RULE_SETUP
 #line 32 "micro.l"
 {
 					if(strlen(yytext) > 32) {
-						printf("Error en la dimension del nombre del Identificador\n");					
+						printf("Error: El nombre del identificador excede la longuitud permitida (<32).\n");
 					} else {
 						return IDENTIFICADOR;
 					}

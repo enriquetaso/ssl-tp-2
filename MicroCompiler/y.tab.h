@@ -39,6 +39,15 @@
 #if YYDEBUG
 extern int yydebug;
 #endif
+/* "%code requires" blocks.  */
+/* Line 2058 of yacc.c  */
+#line 6 "micro.y"
+
+	
+
+
+/* Line 2058 of yacc.c  */
+#line 51 "y.tab.h"
 
 /* Tokens.  */
 #ifndef YYTOKENTYPE
@@ -86,13 +95,15 @@ extern int yydebug;
 typedef union YYSTYPE
 {
 /* Line 2058 of yacc.c  */
-#line 5 "micro.y"
+#line 10 "micro.y"
 
-	int dval
+	int dval;
+	char* caracteres;
+	struct identifType * Identificador;
 
 
 /* Line 2058 of yacc.c  */
-#line 96 "y.tab.h"
+#line 107 "y.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
