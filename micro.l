@@ -33,6 +33,7 @@ entero			{digito}+
 					if(strlen(yytext) > 32) {
 						printf("Error: El nombre del identificador excede la longuitud permitida (<32).\n");
 					} else {
+						yylval.caracteres = strdup(yytext);
 						return IDENTIFICADOR;
 					}
 				}

@@ -830,21 +830,22 @@ YY_RULE_SETUP
 					if(strlen(yytext) > 32) {
 						printf("Error: El nombre del identificador excede la longuitud permitida (<32).\n");
 					} else {
+						yylval.caracteres = strdup(yytext);
 						return IDENTIFICADOR;
 					}
 				}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 39 "micro.l"
+#line 40 "micro.l"
 {return(FDT);}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 40 "micro.l"
+#line 41 "micro.l"
 ECHO;
 	YY_BREAK
-#line 848 "lex.yy.c"
+#line 849 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1838,7 +1839,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 39 "micro.l"
+#line 40 "micro.l"
 
 
 

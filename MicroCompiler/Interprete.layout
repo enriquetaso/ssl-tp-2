@@ -2,19 +2,19 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="y.tab.c" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="y.tab.c" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="46839" topLine="1538" />
-		</Cursor>
-	</File>
-	<File name="y.tab.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2831" topLine="71" />
+			<Cursor1 position="40441" topLine="1308" />
 		</Cursor>
 	</File>
 	<File name="lex.yy.c" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="33973" topLine="1218" />
+		</Cursor>
+	</File>
+	<File name="y.tab.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2831" topLine="71" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

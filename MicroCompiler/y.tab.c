@@ -66,9 +66,16 @@
 #line 1 "micro.y"
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+void asignarIdentificador(char * identificador, int value);
+void obtenerValor(char * identificador);
+int  devolverValor(char * identificador);
 
 /* Line 371 of yacc.c  */
-#line 72 "y.tab.c"
+#line 79 "y.tab.c"
 
 # ifndef YY_NULL
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -97,15 +104,6 @@
 #if YYDEBUG
 extern int yydebug;
 #endif
-/* "%code requires" blocks.  */
-/* Line 387 of yacc.c  */
-#line 6 "micro.y"
-
-	
-
-
-/* Line 387 of yacc.c  */
-#line 109 "y.tab.c"
 
 /* Tokens.  */
 #ifndef YYTOKENTYPE
@@ -153,15 +151,14 @@ extern int yydebug;
 typedef union YYSTYPE
 {
 /* Line 387 of yacc.c  */
-#line 10 "micro.y"
+#line 12 "micro.y"
 
 	int dval;
 	char* caracteres;
-	struct identifType * Identificador;
 
 
 /* Line 387 of yacc.c  */
-#line 165 "y.tab.c"
+#line 162 "y.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -189,7 +186,7 @@ int yyparse ();
 /* Copy the second part of user declarations.  */
 
 /* Line 390 of yacc.c  */
-#line 193 "y.tab.c"
+#line 190 "y.tab.c"
 
 #ifdef short
 # undef short
@@ -465,18 +462,18 @@ static const yytype_uint8 yytranslate[] =
    YYRHS.  */
 static const yytype_uint8 yyprhs[] =
 {
-       0,     0,     3,     6,     9,    13,    15,    18,    23,    29,
-      35,    37,    41,    43,    47,    49,    53,    57,    59,    61
+       0,     0,     3,     6,     9,    13,    16,    18,    23,    29,
+      35,    39,    41,    45,    47,    49,    53,    57,    59,    61
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int8 yyrhs[] =
 {
       19,     0,    -1,    20,     7,    -1,    11,    12,    -1,    11,
-      21,    12,    -1,    22,    -1,    21,    22,    -1,    10,    15,
+      21,    12,    -1,    21,    22,    -1,    22,    -1,    10,    15,
       25,    17,    -1,    13,     8,    23,     9,    17,    -1,    14,
-       8,    24,     9,    17,    -1,    10,    -1,    10,    16,    23,
-      -1,    25,    -1,    25,    16,    24,    -1,    26,    -1,    26,
+       8,    24,     9,    17,    -1,    10,    16,    23,    -1,    10,
+      -1,    25,    16,    24,    -1,    25,    -1,    26,    -1,    26,
        4,    25,    -1,    26,     5,    25,    -1,    10,    -1,     3,
       -1,     8,    25,     9,    -1
 };
@@ -484,8 +481,8 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    30,    30,    32,    33,    36,    37,    40,    41,    42,
-      45,    46,    49,    50,    52,    53,    54,    57,    58,    59
+       0,    32,    32,    34,    35,    38,    39,    42,    43,    44,
+      47,    48,    51,    52,    55,    56,    57,    60,    61,    62
 };
 #endif
 
@@ -522,8 +519,8 @@ static const yytype_uint8 yyr1[] =
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     2,     2,     3,     1,     2,     4,     5,     5,
-       1,     3,     1,     3,     1,     3,     3,     1,     1,     3
+       0,     2,     2,     2,     3,     2,     1,     4,     5,     5,
+       3,     1,     3,     1,     1,     3,     3,     1,     1,     3
 };
 
 /* YYDEFACT[STATE-NAME] -- Default reduction number in state STATE-NUM.
@@ -531,11 +528,11 @@ static const yytype_uint8 yyr2[] =
    means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       0,     0,     0,     0,     0,     3,     0,     0,     0,     5,
-       1,     2,     0,     0,     0,     4,     6,    18,     0,    17,
-       0,    14,    10,     0,     0,    12,     0,     7,     0,     0,
-       0,     0,     0,     0,    19,    15,    16,    11,     8,     9,
-      13
+       0,     0,     0,     0,     0,     3,     0,     0,     0,     6,
+       1,     2,     0,     0,     0,     4,     5,    18,     0,    17,
+       0,    14,    11,     0,     0,    13,     0,     7,     0,     0,
+       0,     0,     0,     0,    19,    15,    16,    10,     8,     9,
+      12
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
@@ -1398,115 +1395,115 @@ yyreduce:
     {
         case 2:
 /* Line 1792 of yacc.c  */
-#line 30 "micro.y"
-    {printf("<programa> FDT\n");}
+#line 32 "micro.y"
+    {exit(0);}
     break;
 
   case 3:
 /* Line 1792 of yacc.c  */
-#line 32 "micro.y"
-    {printf("INICIO y FIN del programa, sin sentencias.\n");}
+#line 34 "micro.y"
+    {}
     break;
 
   case 4:
 /* Line 1792 of yacc.c  */
-#line 33 "micro.y"
-    {printf("INICIO del programa, <listaSentencias>, FIN del programa.\n");}
+#line 35 "micro.y"
+    {}
     break;
 
   case 5:
 /* Line 1792 of yacc.c  */
-#line 36 "micro.y"
-    {printf("<sentencia> \n");}
+#line 38 "micro.y"
+    {}
     break;
 
   case 6:
 /* Line 1792 of yacc.c  */
-#line 37 "micro.y"
-    {printf("Lista de sentencias: <sentencia> {<sentencia>}.\n");}
+#line 39 "micro.y"
+    {}
     break;
 
   case 7:
 /* Line 1792 of yacc.c  */
-#line 40 "micro.y"
-    {printf("ID ASIGNACION <expresion> ;\n"); }
+#line 42 "micro.y"
+    {asignarIdentificador((yyvsp[(1) - (4)].caracteres), (yyvsp[(3) - (4)].dval)); }
     break;
 
   case 8:
 /* Line 1792 of yacc.c  */
-#line 41 "micro.y"
-    {printf("LEER ( <listaIdentificadores> ) ; \n");}
+#line 43 "micro.y"
+    {}
     break;
 
   case 9:
 /* Line 1792 of yacc.c  */
-#line 42 "micro.y"
-    {printf("ESCRIBIR ( <listaExpresiones> ) ;\n");}
+#line 44 "micro.y"
+    {}
     break;
 
   case 10:
 /* Line 1792 of yacc.c  */
-#line 45 "micro.y"
-    {printf("ID\n");}
+#line 47 "micro.y"
+    {obtenerValor((yyvsp[(1) - (3)].caracteres));}
     break;
 
   case 11:
 /* Line 1792 of yacc.c  */
-#line 46 "micro.y"
-    {printf("ID { COMA ID }\n");}
+#line 48 "micro.y"
+    {obtenerValor((yyvsp[(1) - (1)].caracteres));}
     break;
 
   case 12:
 /* Line 1792 of yacc.c  */
-#line 49 "micro.y"
-    {printf("<expresion> %d\n", (yyvsp[(1) - (1)].dval));}
+#line 51 "micro.y"
+    {printf("%d\n", (yyvsp[(1) - (3)].dval));}
     break;
 
   case 13:
 /* Line 1792 of yacc.c  */
-#line 50 "micro.y"
-    {printf("<expresion> {COMA <expresion>}\n");}
+#line 52 "micro.y"
+    {printf("%d\n", (yyvsp[(1) - (1)].dval));}
     break;
 
   case 14:
 /* Line 1792 of yacc.c  */
-#line 52 "micro.y"
-    {(yyval.dval) = (yyvsp[(1) - (1)].dval);	printf("<primaria> %d\n", (yyval.dval));}
+#line 55 "micro.y"
+    {(yyval.dval) = (yyvsp[(1) - (1)].dval);}
     break;
 
   case 15:
 /* Line 1792 of yacc.c  */
-#line 53 "micro.y"
-    {(yyval.dval) = (yyvsp[(1) - (3)].dval) + (yyvsp[(3) - (3)].dval);printf("<primaria> {+ <primaria>} %d\n", (yyval.dval)); }
+#line 56 "micro.y"
+    {(yyval.dval) = (yyvsp[(1) - (3)].dval) + (yyvsp[(3) - (3)].dval);}
     break;
 
   case 16:
 /* Line 1792 of yacc.c  */
-#line 54 "micro.y"
-    {(yyval.dval) = (yyvsp[(1) - (3)].dval) - (yyvsp[(3) - (3)].dval);printf("<primaria> {- <primaria>} %d\n", (yyval.dval));}
+#line 57 "micro.y"
+    {(yyval.dval) = (yyvsp[(1) - (3)].dval) - (yyvsp[(3) - (3)].dval);}
     break;
 
   case 17:
 /* Line 1792 of yacc.c  */
-#line 57 "micro.y"
-    {printf("ID\n");}
+#line 60 "micro.y"
+    {(yyval.dval) = devolverValor((yyvsp[(1) - (1)].caracteres));}
     break;
 
   case 18:
 /* Line 1792 of yacc.c  */
-#line 58 "micro.y"
-    {printf("CONSTANTE encontrada: %d\n", (yyvsp[(1) - (1)].dval)); (yyval.dval) = (yyvsp[(1) - (1)].dval);}
+#line 61 "micro.y"
+    {(yyval.dval) = (yyvsp[(1) - (1)].dval);}
     break;
 
   case 19:
 /* Line 1792 of yacc.c  */
-#line 59 "micro.y"
-    {printf("( <expresion> )\n");}
+#line 62 "micro.y"
+    {(yyval.dval) = (yyvsp[(2) - (3)].dval);}
     break;
 
 
 /* Line 1792 of yacc.c  */
-#line 1510 "y.tab.c"
+#line 1507 "y.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1738,7 +1735,7 @@ yyreturn:
 
 
 /* Line 2055 of yacc.c  */
-#line 61 "micro.y"
+#line 64 "micro.y"
 
 FILE *yyin;
 
@@ -1748,24 +1745,70 @@ typedef struct Identificador {
 } Identificador;
 
 Identificador arrayIdentificadores[100];
+int cantidadIdentificadores = 0;
+int buscarIdentificador(char * identificador);
+void insertarIdentificador(char * identificador, int value);
+void asignarIdentificador(char * identificador, int value);
+void obtenerValor(char * identificador);
+int devolverValor(char * identificador);
+
 
 int yyerror(char *s) {
-  printf("Error: no se reconoce la operacion %s.\n", s);
+  printf("Error: %s.\n", s);
+  exit(-1);
+}
+
+int buscarIdentificador(char * identificador) {
+	int i;
+	for(i = 0; i < cantidadIdentificadores; i++) {
+		if(!strcmp(arrayIdentificadores[i].identificador,identificador)){
+			return i;
+		}
+	}
+	return -1;
+}
+
+int devolverValor(char * identificador) {
+	int indice = buscarIdentificador(identificador);
+	if(indice < 0) { yyerror("Identificador no inicializado"); }
+	return arrayIdentificadores[indice].valor;
+}
+
+void insertarIdentificador(char * identificador, int value) {
+	int indice = cantidadIdentificadores;
+	strcpy(arrayIdentificadores[indice].identificador, identificador);
+	arrayIdentificadores[indice].valor = value;
+	cantidadIdentificadores++;
+}
+
+void asignarIdentificador(char * identificador, int value) {	
+	int indiceIdentificador;
+	indiceIdentificador = buscarIdentificador(identificador);
+	if(indiceIdentificador < 0) {
+		insertarIdentificador(identificador, value);
+	} else {
+		arrayIdentificadores[indiceIdentificador].valor = value;		
+	}	
+}
+
+void obtenerValor(char * identificador) {
+	int aux;
+	printf("ingrese valor para %s: ", identificador);
+	scanf("%d",&aux); 
+	asignarIdentificador(identificador, aux);	
 }
 
 int main(int argc, char *argv[]) {
-	int i = 0;
 	if(argc < 2) {
 		printf("Ingrese su codigo de forma manual\n");
 		yyparse();
 	} else {
 		printf("Se va a leer el codigo del archivo: %s\n", argv[1]);
-		if(yyin=fopen(argv[1],"rb")){
+		if((yyin=fopen(argv[1],"rb"))){
 			yyparse();
 		} else {
-			printf("Error al abrir el archivo\n", argv[1]);
+			printf("Error al abrir el archivo %s\n", argv[1]);
 		}
 	}
-	system("pause");
 }
 

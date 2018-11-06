@@ -1,16 +1,17 @@
 %{
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+void asignarIdentificador(char * identificador, int value);
+void obtenerValor(char * identificador);
+int  devolverValor(char * identificador);
 %}
-
-
-%code requires {
-	
-}
 
 %union {
 	int dval;
 	char* caracteres;
-	struct identifType * Identificador;
 }
 
 %token  <dval> CONSTENTERA
@@ -18,45 +19,47 @@
 %token  PARENT_IZQUIERDO	PARENT_DERECHO   IDENTIFICADOR
 %token  INICIO  FIN  LEER  ESCRIBIR  ASIGNACION  COMA PUNTOYCOMA
 
-%left   SIMB_MAS    SIMB_MENOS
-%right  ASIGNACION
+%left   SIMB_MAS    SIMB_MENOS	COMA
+%right  ASIGNACION	
 
 %type <dval> Expresion Primaria
+%type <caracteres> IDENTIFICADOR
 
 %start Objetivo
 
 %%
 
-Objetivo : Programa FDT {printf("<programa> FDT\n");};
+Objetivo : Programa FDT {exit(0);};
 			
-Programa : INICIO FIN 							{printf("INICIO y FIN del programa, sin sentencias.\n");}
-		|  INICIO ListaSentencias FIN 			{printf("INICIO del programa, <listaSentencias>, FIN del programa.\n");}
+Programa : INICIO FIN 							{}
+		|  INICIO ListaSentencias FIN 			{}
 		;
 			
-ListaSentencias : Sentencia						{printf("<sentencia> \n");}
-				| ListaSentencias Sentencia		{printf("Lista de sentencias: <sentencia> {<sentencia>}.\n");}
+ListaSentencias : ListaSentencias Sentencia		{}
+				| Sentencia						{}
 				;
 				
-Sentencia : IDENTIFICADOR ASIGNACION Expresion PUNTOYCOMA 							{printf("ID ASIGNACION <expresion> ;\n"); }
-			| LEER PARENT_IZQUIERDO ListaIdentificadores PARENT_DERECHO PUNTOYCOMA	{printf("LEER ( <listaIdentificadores> ) ; \n");}
-			| ESCRIBIR PARENT_IZQUIERDO ListaExpresiones PARENT_DERECHO PUNTOYCOMA	{printf("ESCRIBIR ( <listaExpresiones> ) ;\n");}
+Sentencia : IDENTIFICADOR ASIGNACION Expresion PUNTOYCOMA 							{asignarIdentificador($1, $3); }
+			| LEER PARENT_IZQUIERDO ListaIdentificadores PARENT_DERECHO PUNTOYCOMA	{}
+			| ESCRIBIR PARENT_IZQUIERDO ListaExpresiones PARENT_DERECHO PUNTOYCOMA	{}
 			;
 
-ListaIdentificadores : IDENTIFICADOR							{printf("ID\n");}
-					| IDENTIFICADOR COMA ListaIdentificadores	{printf("ID { COMA ID }\n");}
+ListaIdentificadores : IDENTIFICADOR COMA ListaIdentificadores	{obtenerValor($1);}
+					|  IDENTIFICADOR							{obtenerValor($1);}
 					;
 			
-ListaExpresiones : Expresion						{printf("<expresion> %d\n", $1);}
-				| Expresion COMA ListaExpresiones	{printf("<expresion> {COMA <expresion>}\n");}
+ListaExpresiones : Expresion COMA ListaExpresiones	{printf("%d\n", $1);}
+				| Expresion							{printf("%d\n", $1);}
+				
 				;			
-Expresion :	Primaria						{$$ = $1;	printf("<primaria> %d\n", $$);}
-			| Primaria SIMB_MAS Expresion	{$$ = $1 + $3;printf("<primaria> {+ <primaria>} %d\n", $$); }
-			| Primaria SIMB_MENOS Expresion	{$$ = $1 - $3;printf("<primaria> {- <primaria>} %d\n", $$);}
+Expresion :	Primaria						{$$ = $1;}
+			| Primaria SIMB_MAS Expresion	{$$ = $1 + $3;}
+			| Primaria SIMB_MENOS Expresion	{$$ = $1 - $3;}
 			;
 			
-Primaria : IDENTIFICADOR 							{printf("ID\n");}
-		| CONSTENTERA 								{printf("CONSTANTE encontrada: %d\n", $1); $$ = $1;}
-		| PARENT_IZQUIERDO Expresion PARENT_DERECHO {printf("( <expresion> )\n");}
+Primaria : IDENTIFICADOR 							{$$ = devolverValor($1);}
+		| CONSTENTERA 								{$$ = $1;}
+		| PARENT_IZQUIERDO Expresion PARENT_DERECHO {$$ = $2;}
 		;
 %%
 FILE *yyin;
@@ -67,24 +70,70 @@ typedef struct Identificador {
 } Identificador;
 
 Identificador arrayIdentificadores[100];
+int cantidadIdentificadores = 0;
+int buscarIdentificador(char * identificador);
+void insertarIdentificador(char * identificador, int value);
+void asignarIdentificador(char * identificador, int value);
+void obtenerValor(char * identificador);
+int devolverValor(char * identificador);
+
 
 int yyerror(char *s) {
-  printf("Error: no se reconoce la operacion %s.\n", s);
+  printf("Error: %s.\n", s);
+  exit(-1);
+}
+
+int buscarIdentificador(char * identificador) {
+	int i;
+	for(i = 0; i < cantidadIdentificadores; i++) {
+		if(!strcmp(arrayIdentificadores[i].identificador,identificador)){
+			return i;
+		}
+	}
+	return -1;
+}
+
+int devolverValor(char * identificador) {
+	int indice = buscarIdentificador(identificador);
+	if(indice < 0) { yyerror("Identificador no inicializado"); }
+	return arrayIdentificadores[indice].valor;
+}
+
+void insertarIdentificador(char * identificador, int value) {
+	int indice = cantidadIdentificadores;
+	strcpy(arrayIdentificadores[indice].identificador, identificador);
+	arrayIdentificadores[indice].valor = value;
+	cantidadIdentificadores++;
+}
+
+void asignarIdentificador(char * identificador, int value) {	
+	int indiceIdentificador;
+	indiceIdentificador = buscarIdentificador(identificador);
+	if(indiceIdentificador < 0) {
+		insertarIdentificador(identificador, value);
+	} else {
+		arrayIdentificadores[indiceIdentificador].valor = value;		
+	}	
+}
+
+void obtenerValor(char * identificador) {
+	int aux;
+	printf("ingrese valor para %s: ", identificador);
+	scanf("%d",&aux); 
+	asignarIdentificador(identificador, aux);	
 }
 
 int main(int argc, char *argv[]) {
-	int i = 0;
 	if(argc < 2) {
 		printf("Ingrese su codigo de forma manual\n");
 		yyparse();
 	} else {
 		printf("Se va a leer el codigo del archivo: %s\n", argv[1]);
-		if(yyin=fopen(argv[1],"rb")){
+		if((yyin=fopen(argv[1],"rb"))){
 			yyparse();
 		} else {
-			printf("Error al abrir el archivo\n", argv[1]);
+			printf("Error al abrir el archivo %s\n", argv[1]);
 		}
 	}
-	system("pause");
 }
 
