@@ -23,7 +23,7 @@ int  devolverValor(char * identificador);
 %right  ASIGNACION	
 
 %type <dval> Expresion Primaria
-%type <caracteres> IDENTIFICADOR
+%type <caracteres> IDENTIFICADOR Sentencia
 
 %start Objetivo
 
@@ -39,17 +39,17 @@ ListaSentencias : ListaSentencias Sentencia		{}
 				| Sentencia						{}
 				;
 				
-Sentencia : IDENTIFICADOR ASIGNACION Expresion PUNTOYCOMA 							{asignarIdentificador($1, $3); }
-			| LEER PARENT_IZQUIERDO ListaIdentificadores PARENT_DERECHO PUNTOYCOMA	{}
-			| ESCRIBIR PARENT_IZQUIERDO ListaExpresiones PARENT_DERECHO PUNTOYCOMA	{}
+Sentencia : IDENTIFICADOR ASIGNACION Expresion PUNTOYCOMA 		{printf("\nIdentificada operacion de asignacion\n%s:=%d;",$1,$3);asignarIdentificador($1, $3); }
+			| LEER PARENT_IZQUIERDO ListaIdentificadores PARENT_DERECHO PUNTOYCOMA	{printf("\nIdentificada operacion de lectura\n");}
+			| ESCRIBIR PARENT_IZQUIERDO ListaExpresiones PARENT_DERECHO PUNTOYCOMA	{printf("\nIdentificada operacion de escritura\n");}
 			;
 
-ListaIdentificadores : IDENTIFICADOR COMA ListaIdentificadores	{obtenerValor($1);}
+ListaIdentificadores : ListaIdentificadores COMA IDENTIFICADOR 	{obtenerValor($3);}
 					|  IDENTIFICADOR							{obtenerValor($1);}
 					;
 			
-ListaExpresiones : Expresion COMA ListaExpresiones	{printf("%d\n", $1);}
-				| Expresion							{printf("%d\n", $1);}
+ListaExpresiones : ListaExpresiones COMA Expresion 	{printf(", %d", $3);}
+				| Expresion							{printf("%d", $1);}
 				
 				;			
 Expresion :	Primaria						{$$ = $1;}
@@ -79,8 +79,9 @@ int devolverValor(char * identificador);
 
 
 int yyerror(char *s) {
-  printf("Error: %s.\n", s);
-  exit(-1);
+	if(!strcmp(s, "syntax error")) printf("Error: Error de sintaxis.\n");
+	else	printf("Error: %s.\n", s);
+	exit(-1);
 }
 
 int buscarIdentificador(char * identificador) {

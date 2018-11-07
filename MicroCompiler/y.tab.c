@@ -406,7 +406,7 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  10
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   38
+#define YYLAST   34
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  18
@@ -472,8 +472,8 @@ static const yytype_int8 yyrhs[] =
       19,     0,    -1,    20,     7,    -1,    11,    12,    -1,    11,
       21,    12,    -1,    21,    22,    -1,    22,    -1,    10,    15,
       25,    17,    -1,    13,     8,    23,     9,    17,    -1,    14,
-       8,    24,     9,    17,    -1,    10,    16,    23,    -1,    10,
-      -1,    25,    16,    24,    -1,    25,    -1,    26,    -1,    26,
+       8,    24,     9,    17,    -1,    23,    16,    10,    -1,    10,
+      -1,    24,    16,    25,    -1,    25,    -1,    26,    -1,    26,
        4,    25,    -1,    26,     5,    25,    -1,    10,    -1,     3,
       -1,     8,    25,     9,    -1
 };
@@ -531,32 +531,32 @@ static const yytype_uint8 yydefact[] =
        0,     0,     0,     0,     0,     3,     0,     0,     0,     6,
        1,     2,     0,     0,     0,     4,     5,    18,     0,    17,
        0,    14,    11,     0,     0,    13,     0,     7,     0,     0,
-       0,     0,     0,     0,    19,    15,    16,    10,     8,     9,
+       0,     0,     0,     0,    19,    15,    16,     8,    10,     9,
       12
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     2,     3,     8,     9,    23,    24,    25,    21
+      -1,     2,     3,     8,     9,    23,    24,    20,    21
 };
 
 /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
    STATE-NUM.  */
-#define YYPACT_NINF -13
+#define YYPACT_NINF -15
 static const yytype_int8 yypact[] =
 {
-       4,    -9,    18,    12,     5,   -13,    13,    14,    -2,   -13,
-     -13,   -13,    -1,    15,    -1,   -13,   -13,   -13,    -1,   -13,
-       6,     9,     8,    17,    19,    11,    20,   -13,    -1,    -1,
-      15,    16,    21,    -1,   -13,   -13,   -13,   -13,   -13,   -13,
-     -13
+      -4,     8,     5,     6,     1,   -15,     9,    16,    13,   -15,
+     -15,   -15,    -2,    18,    -2,   -15,   -15,   -15,    -2,   -15,
+      12,     7,   -15,    -7,    -6,   -15,    21,   -15,    -2,    -2,
+      14,    22,    17,    -2,   -15,   -15,   -15,   -15,   -15,   -15,
+     -15
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -13,   -13,   -13,   -13,    22,     1,     2,   -12,   -13
+     -15,   -15,   -15,   -15,    25,   -15,   -15,   -14,   -15
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -565,24 +565,24 @@ static const yytype_int8 yypgoto[] =
 #define YYTABLE_NINF -1
 static const yytype_uint8 yytable[] =
 {
-      20,     4,    17,     5,     6,     7,    26,    18,     4,    19,
-      15,     6,     7,    28,    29,     1,    35,    36,    10,    11,
-      12,    13,    14,    27,    30,    22,    31,    33,    32,    34,
-      16,    37,     0,    38,     0,    40,     0,     0,    39
+      25,    17,    30,    32,    26,    10,    18,     1,    19,    31,
+      33,    28,    29,    11,    35,    36,    12,    13,     4,    40,
+       5,     6,     7,     4,    14,    15,     6,     7,    22,    27,
+      34,    37,    38,    16,    39
 };
 
 #define yypact_value_is_default(Yystate) \
-  (!!((Yystate) == (-13)))
+  (!!((Yystate) == (-15)))
 
 #define yytable_value_is_error(Yytable_value) \
   YYID (0)
 
-static const yytype_int8 yycheck[] =
+static const yytype_uint8 yycheck[] =
 {
-      12,    10,     3,    12,    13,    14,    18,     8,    10,    10,
-      12,    13,    14,     4,     5,    11,    28,    29,     0,     7,
-      15,     8,     8,    17,    16,    10,     9,    16,     9,     9,
-       8,    30,    -1,    17,    -1,    33,    -1,    -1,    17
+      14,     3,     9,     9,    18,     0,     8,    11,    10,    16,
+      16,     4,     5,     7,    28,    29,    15,     8,    10,    33,
+      12,    13,    14,    10,     8,    12,    13,    14,    10,    17,
+       9,    17,    10,     8,    17
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
@@ -592,8 +592,8 @@ static const yytype_uint8 yystos[] =
        0,    11,    19,    20,    10,    12,    13,    14,    21,    22,
        0,     7,    15,     8,     8,    12,    22,     3,     8,    10,
       25,    26,    10,    23,    24,    25,    25,    17,     4,     5,
-      16,     9,     9,    16,     9,    25,    25,    23,    17,    17,
-      24
+       9,    16,     9,    16,     9,    25,    25,    17,    10,    17,
+      25
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1426,25 +1426,25 @@ yyreduce:
   case 7:
 /* Line 1792 of yacc.c  */
 #line 42 "micro.y"
-    {asignarIdentificador((yyvsp[(1) - (4)].caracteres), (yyvsp[(3) - (4)].dval)); }
+    {printf("\nIdentificada operacion de asignacion\n%s:=%d;",(yyvsp[(1) - (4)].caracteres),(yyvsp[(3) - (4)].dval));asignarIdentificador((yyvsp[(1) - (4)].caracteres), (yyvsp[(3) - (4)].dval)); }
     break;
 
   case 8:
 /* Line 1792 of yacc.c  */
 #line 43 "micro.y"
-    {}
+    {printf("\nIdentificada operacion de lectura\n");}
     break;
 
   case 9:
 /* Line 1792 of yacc.c  */
 #line 44 "micro.y"
-    {}
+    {printf("\nIdentificada operacion de escritura\n");}
     break;
 
   case 10:
 /* Line 1792 of yacc.c  */
 #line 47 "micro.y"
-    {obtenerValor((yyvsp[(1) - (3)].caracteres));}
+    {obtenerValor((yyvsp[(3) - (3)].caracteres));}
     break;
 
   case 11:
@@ -1456,13 +1456,13 @@ yyreduce:
   case 12:
 /* Line 1792 of yacc.c  */
 #line 51 "micro.y"
-    {printf("%d\n", (yyvsp[(1) - (3)].dval));}
+    {printf(", %d", (yyvsp[(3) - (3)].dval));}
     break;
 
   case 13:
 /* Line 1792 of yacc.c  */
 #line 52 "micro.y"
-    {printf("%d\n", (yyvsp[(1) - (1)].dval));}
+    {printf("%d", (yyvsp[(1) - (1)].dval));}
     break;
 
   case 14:
@@ -1754,8 +1754,9 @@ int devolverValor(char * identificador);
 
 
 int yyerror(char *s) {
-  printf("Error: %s.\n", s);
-  exit(-1);
+	if(!strcmp(s, "syntax error")) printf("Error: Error de sintaxis.\n");
+	else	printf("Error: %s.\n", s);
+	exit(-1);
 }
 
 int buscarIdentificador(char * identificador) {
