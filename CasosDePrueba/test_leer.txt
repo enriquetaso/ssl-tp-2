@@ -1,6 +1,7 @@
 inicio
 a:=11;
 b:=12;
-leer(a,b);
+leer(z);
+escribir(a+z, b-z);
 fin.
 salir

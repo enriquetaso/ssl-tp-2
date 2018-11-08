@@ -1,6 +1,5 @@
 inicio
 cc:=9.0;
-leer(a);
 fin.
 salir
 
